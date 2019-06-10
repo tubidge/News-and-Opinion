@@ -16,7 +16,7 @@ app.use(express.static("public"));
 app.engine("handlebars", exphbs({
     defaultLayout: "main"
 }));
-app.set("view engine", "hbs);")
+app.set("view engine", "handlebars");
 
 // creating DB connection based on environment
 const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";

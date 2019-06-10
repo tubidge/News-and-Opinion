@@ -22,10 +22,10 @@ router.get('/scrape', (req, res) => {
     });
 });
 
-// route to get articles from DB
+// route to get articles from DB and render in html
 router.get('/articles', (req, res) => {
     db.Article.find({})
-        .then(dbArticle => res.json(dbArticle))
+        .then(dbArticle => res.render('index', dbArticle))
         .catch(err => res.json(err));
 });
 
