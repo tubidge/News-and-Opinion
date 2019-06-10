@@ -1,0 +1,12 @@
+<h1>News and Opinion</h1>
+<br>
+<br>
+<div id="articles">
+    {{#each articles}}
+    <p>{{this.title}} &nbsp
+        <button class='comment' data-id='{{this.id}}'>Comment</button>
+    </p>
+    {{/each}}
+</div>
+<div id="notes">
+</div>
