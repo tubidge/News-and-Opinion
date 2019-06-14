@@ -9,24 +9,35 @@ const db = require('../models');
 router.get('/scrape', (req, res) => {
     axios.get('http://www.echojs.com/').then(response => {
         let $ = cheerio.load(response.data);
+        let result = {};
         $('article h2').each(function (i, element) {
-            let result = {};
             result.title = $(this).children('a').text();
             result.link = $(this).children('a').attr('href');
-            console.log(result);
             db.Article.create(result)
                 // .then(dbArticle => console.log(dbArticle))
                 .catch(err => console.log(err));
         });
+        console.log(result);
         res.send('Scrape Complete');
     });
 });
 
 // route to get articles from DB and render in html
+// router.get('/articles', (req, res) => {
+//     db.Article.find({})
+//         // .then(dbArticle => res.json(dbArticle))
+//         .catch(err => res.json(err));
+//     res.render('index', { articles: res });
+// });
+
+// route to get articles from DB and render in html
 router.get('/articles', (req, res) => {
-    db.Article.find({})
-        .then(dbArticle => res.render('index', dbArticle))
-        .catch(err => res.json(err));
+    db.Article.find({}, (err, data) => {
+        if (err) {
+            return res.json(err);
+        }
+        res.render('index', { articles: data });
+    })
 });
 
 // route to get article note 
