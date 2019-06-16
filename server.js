@@ -8,7 +8,9 @@ const mongoose = require("mongoose");
 const PORT = process.env.PORT || 3000;
 
 // configuring middleware
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({
+    extended: true
+}));
 app.use(express.json());
 app.use(express.static("public"));
 
@@ -19,8 +21,10 @@ app.engine("handlebars", exphbs({
 app.set("view engine", "handlebars");
 
 // creating DB connection based on environment
-const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
-mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
+const MONGODB_URI = process.env.MONGODB_URI || "mongodb://tubidge:Password1@ds137827.mlab.com:37827/heroku_txcx1nqf";
+mongoose.connect(MONGODB_URI, {
+    useNewUrlParser: true
+});
 
 const routes = require("./controllers/news_controller");
 app.use(routes);
