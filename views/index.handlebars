@@ -1,12 +1,27 @@
-<h1>News and Opinion</h1>
 <br>
 <br>
-<div id="articles">
-    {{#each articles}}
-    <p>{{this.title}} &nbsp
-        <button class='comment' data-id='{{this.id}}'>Comment</button>
-    </p>
-    {{/each}}
-</div>
-<div id="notes">
+<div class="container">
+    <div class="row">
+        <div class="col col-sm-2"></div>
+        <div class="col">
+            <h1>News and Opinion</h1>
+        </div>
+        <div class="col col-sm-2"></div>
+    </div>
+    <br> <br>
+    <div class="row">
+        <div class="col col-sm-8" id="articles">
+            {{#each articles}}
+            <h5>{{this.title}}</h5>
+            <p><a href="{{this.link}}">{{this.link}}</a></p>
+            <p>
+                <button class='comment' data-id='{{this.id}}'>Comment</button>
+            </p>
+            <hr>
+            {{/each}}
+        </div>
+        <div class="col col-sm-4" id="comment-col">
+
+        </div>
+    </div>
 </div>
