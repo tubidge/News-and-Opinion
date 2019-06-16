@@ -21,7 +21,7 @@ app.engine("handlebars", exphbs({
 app.set("view engine", "handlebars");
 
 // creating DB connection based on environment
-const MONGODB_URI = process.env.MONGODB_URI || "mongodb://tubidge:Password1@ds137827.mlab.com:37827/heroku_txcx1nqf";
+const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
 mongoose.connect(MONGODB_URI, {
     useNewUrlParser: true
 });
